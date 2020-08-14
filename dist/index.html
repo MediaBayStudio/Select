@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="Select.js"></script>
+  <title>select</title>
+</head>
+<body>
+  <section class="container">
+    <h2 class="container__title">Заполните форму</h2>
+    <form action="#" method="POST" class="form" id="form-1">
+      <!-- <select name="select" class="select__list">
+        <option selected class="select__item">Выберите цвет</option>
+        <option label="<span class='select__color-name'>Черный</span><span class='select__color color_black'></span>" value="44" class="select__item"></option>
+        <option label="<span class='select__color-name'>Синий</span><span class='select__color color_blue'></span>" value="46" class="select__item"></option>
+        <option label="<span class='select__color-name'>Зеленый</span><span class='select__color color_green'></span>" value="48" class="select__item"></option>
+      </select> -->
+      <select name="select[]" class="select__list" multiple>
+        <option disabled class="select__item">Выберите размер</option>
+        <option id="1" value="44" class="select__item">44</option>
+        <option id="2" value="46" class="select__item">46</option>
+        <option id="3" value="48" class="select__item">48</option>
+        <option id="4" value="all" class="select__item">Выбрать все</option>
+      </select>
+      <!-- <select name="select-size[]" class="select-size__list">
+        <option selected class="select-size__item">Выберите марку и модель</option>
+        <option label="<span class='left'>bmw</span><span class='right'>112i</span>" value="bmw 112i" class="select-size__item"></option>
+        <option label="<span class='left'>bmw</span><span class='right'>212i</span>" value="bmw 212i" class="select-size__item"></option>
+        <option label="<span class='left'>bmw</span><span class='right'>312i</span>" value="bmw 312i" class="select-size__item"></option>
+      </select> -->
+      <!-- <select name="select-size[]" class="select-size__list" multiple>
+        <option disabled class="select-size__item">Выберите марку и модель</option>
+        <option label="<span class='left'>bmw</span><span class='right'>112i</span>" value="bmw 112i" class="select-size__item"></option>
+        <option selected label="<span class='left'>bmw</span><span class='right'>212i</span>" value="bmw 212i" class="select-size__item"></option>
+        <option selected label="<span class='left'>bmw</span><span class='right'>312i</span>" value="bmw 312i" class="select-size__item"></option>
+      </select> -->
+      <button class="btn">Отправить</button>
+    </form>
+  </section>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>  -->
+  <script>
+    let selectSize = new Select('.select__list', {
+      wrapperClass: 'select',
+      buttonClass: 'select__btn',
+      copyAttributes: ['class', 'id'],
+      // closeIfAllSelected: false,
+      setListTemplate: function(list) {
+        // return `
+        // <div class="select__list-wrapper">
+        //   ${list}
+        // </div>`;
+          return `
+        <div class="select__list-wrapper">
+          <div class="select__list__heading">
+            <span class="select__mark">Название</span>
+            <span class="select__model">Код</span>
+          </div>
+          ${list}
+          <div class="select__bottom">
+            <a href="catalog.php" class="select__link">Перейти в каталог</a>
+          </div>`;
+      }
+    });
+    console.log(selectSize);
+  </script>
+</body>
+</html>
