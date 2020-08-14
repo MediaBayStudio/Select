@@ -122,6 +122,9 @@
   
     _.$select = q(_.selector);
   
+    _.$select.openSelect = _.openSelectHandler;
+    _.$select.closeSelect = _.closeSelectHandler;
+  
     _.$options = _.$select.options;
     _.multiple = _.$select.hasAttribute('multiple');
     _.size = _.$select.getAttribute('size') || 1;
@@ -330,32 +333,18 @@
     let _ = this;
   
     if (!_.opened) {
-  
       _.dispatchEvent(_.$select, 'open', _.selectedIndex);
-  
       _.$wrapper.classList.add('active');
-  
       _.opened = true;
-      // _.focusedIndex = _.lastSelectedIndex || -1;
-      // _.lastFocusedIndex = _.focusedIndex - 1 || -1;
-  
     }
-  
-    
   };
   Select.prototype.closeSelect = function(e) {
-    let _ = this,
-      eventType = e.type,
-      eventTarget = e.target,
-      eventCurrentTarget = e.currentTarget,
-      listItems = _.$listItems;
+    let _ = this;
   
     if (_.opened) {
       _.dispatchEvent(_.$select, 'close');
       _.$wrapper.classList.remove('active');
-      _.$wrapper.removeEventListener('click', _.closeSelectHandler);
       _.opened = false;
-      console.log(_);
     }
   };
   Select.prototype.dispatchEvent = function(element, eventName) {

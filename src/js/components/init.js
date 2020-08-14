@@ -14,6 +14,9 @@ Select.prototype.init = function() {
 
   _.$select = q(_.selector);
 
+  _.$select.openSelect = _.openSelectHandler;
+  _.$select.closeSelect = _.closeSelectHandler;
+
   _.$options = _.$select.options;
   _.multiple = _.$select.hasAttribute('multiple');
   _.size = _.$select.getAttribute('size') || 1;
